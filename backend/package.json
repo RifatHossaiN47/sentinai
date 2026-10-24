@@ -1,0 +1,45 @@
+{
+  "name": "sentinai-engine",
+  "version": "1.0.0",
+  "description": "SentinAI Intelligent API Monitoring & Automated Alerting Backend Engine",
+  "main": "dist/server.js",
+  "scripts": {
+    "predev": "node scripts/ensure-env.js",
+    "dev": "tsx watch src/server.ts",
+    "build": "node scripts/ensure-env.js && npx prisma generate && tsc",
+    "start": "node dist/server.js",
+    "db:push": "node scripts/ensure-env.js && npx prisma db push",
+    "db:seed": "node scripts/ensure-env.js && tsx prisma/seed.ts",
+    "monitor:file": "node scripts/ensure-env.js && tsx src/scripts/cliRunner.ts",
+    "test": "node scripts/ensure-env.js && vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@google/genai": "^2.31.0",
+    "@prisma/client": "^6.4.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.10.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.13.4",
+    "@types/nodemailer": "^6.4.17",
+    "@types/supertest": "^6.0.2",
+    "prisma": "^6.4.1",
+    "supertest": "^7.0.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.6"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  }
+}

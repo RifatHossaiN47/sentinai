@@ -1,0 +1,39 @@
+{
+  "name": "sentinai-api-monitor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SentinAI: Intelligent API Monitoring & Automated AI Alert System",
+  "author": "Md Rifat Hossen <rifat8851@gmail.com>",
+  "scripts": {
+    "postinstall": "npx prisma generate --schema=backend/prisma/schema.prisma",
+    "setup": "npm --prefix backend install && npm --prefix frontend install && npm --prefix backend run db:push && npm --prefix backend run db:seed",
+    "dev": "concurrently -n \"ENGINE,DASHBOARD\" -c \"cyan,magenta\" \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\"",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "monitor:file": "npm --prefix backend run monitor:file --",
+    "test": "npm --prefix backend test",
+    "build": "npm --prefix backend run build && npm --prefix frontend run build"
+  },
+  "dependencies": {
+    "@google/genai": "^2.31.0",
+    "@prisma/client": "^6.4.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.10.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.13.4",
+    "@types/nodemailer": "^6.4.17",
+    "concurrently": "^9.1.2",
+    "prisma": "^6.4.1",
+    "typescript": "^5.7.3"
+  }
+}
