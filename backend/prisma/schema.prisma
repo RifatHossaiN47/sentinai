@@ -1,0 +1,83 @@
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model ApiEndpoint {
+  id              String         @id @default(uuid())
+  name            String         @unique
+  description     String?
+  target_url      String?
+  is_critical     Boolean        @default(true)
+  sla_latency_ms  Int            @default(2500)
+  current_health  String         @default("HEALTHY")
+  created_at      DateTime       @default(now())
+  updated_at      DateTime       @updatedAt
+
+  telemetry_logs  TelemetryLog[]
+  alerts          AnomalyAlert[]
+}
+
+model TelemetryLog {
+  id               String         @id @default(uuid())
+  endpoint_id      String?
+  api_name         String
+  response_time_ms Int
+  status_code      Int
+  records_returned Int
+  is_anomaly       Boolean        @default(false)
+  anomaly_reason   String?
+  timestamp        DateTime       @default(now())
+
+  endpoint         ApiEndpoint?   @relation(fields: [endpoint_id], references: [id], onDelete: Cascade)
+  alerts           AnomalyAlert[]
+
+  @@index([api_name, timestamp(sort: Desc)])
+  @@index([is_anomaly])
+}
+
+model AnomalyAlert {
+  id                     String           @id @default(uuid())
+  endpoint_id            String?
+  telemetry_id           String?
+  api_name               String
+  status_code            Int
+  response_time_ms       Int
+  records_returned       Int
+  severity               String
+  status                 String           @default("ACTIVE")
+  message                String
+  root_cause_explanation String
+  suggested_action       String
+  ai_fallback            Boolean          @default(false)
+  email_dispatched       Boolean          @default(false)
+  email_preview_url      String?
+  occurrence_count       Int              @default(1)
+  detected_at            DateTime         @default(now())
+  last_detected_at       DateTime         @default(now())
+  resolved_at            DateTime?
+
+  endpoint               ApiEndpoint?     @relation(fields: [endpoint_id], references: [id], onDelete: Cascade)
+  telemetry              TelemetryLog?    @relation(fields: [telemetry_id], references: [id], onDelete: SetNull)
+  action_logs            AlertActionLog[]
+
+  @@index([status, severity])
+  @@index([api_name])
+}
+
+model AlertActionLog {
+  id               String       @id @default(uuid())
+  alert_id         String
+  action_type      String
+  operator_name    String       @default("SRE On-Call")
+  resolution_notes String?
+  mttr_seconds     Int?
+  created_at       DateTime     @default(now())
+
+  alert            AnomalyAlert @relation(fields: [alert_id], references: [id], onDelete: Cascade)
+}
