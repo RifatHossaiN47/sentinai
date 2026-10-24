@@ -1,0 +1,26 @@
+[
+  {
+    "api_name": "PatientDataAPI",
+    "response_time_ms": 215,
+    "status_code": 200,
+    "records_returned": 64
+  },
+  {
+    "api_name": "AppointmentAPI",
+    "response_time_ms": 180,
+    "status_code": 200,
+    "records_returned": 42
+  },
+  {
+    "api_name": "BillingAPI",
+    "response_time_ms": 310,
+    "status_code": 200,
+    "records_returned": 29
+  },
+  {
+    "api_name": "CaregiverComplianceAPI",
+    "response_time_ms": 145,
+    "status_code": 200,
+    "records_returned": 112
+  }
+]
