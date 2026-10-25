@@ -9,6 +9,7 @@ import { errorHandler } from './middleware/errorHandler';
 import monitorRoutes from './routes/monitor.routes';
 import alertRoutes from './routes/alert.routes';
 import metricsRoutes from './routes/metrics.routes';
+import { initializeDatabase } from './config/prisma';
 
 const app = express();
 
@@ -23,6 +24,19 @@ app.use(express.json({ limit: '2mb' }));
 if (process.env.NODE_ENV !== 'test') {
   app.use(requestLogger);
 }
+
+let isDbInitialized = false;
+app.use(async (_req, _res, next) => {
+  if (!isDbInitialized) {
+    try {
+      await initializeDatabase();
+      isDbInitialized = true;
+    } catch (err) {
+      console.warn('[Database] Initialization note:', (err as Error).message);
+    }
+  }
+  next();
+});
 
 const monitorRateLimiter = rateLimit({
   windowMs: 60 * 1000,

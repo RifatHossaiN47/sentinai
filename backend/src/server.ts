@@ -2,31 +2,8 @@ import app from './app';
 import { env } from './config/env';
 import { initializeDatabase, prisma } from './config/prisma';
 
-let isDbInitialized = false;
-
-// Initialize database on first serverless request if not already initialized
-app.use(async (_req, _res, next) => {
-  if (!isDbInitialized) {
-    try {
-      await initializeDatabase();
-      isDbInitialized = true;
-    } catch (err) {
-      console.warn('[DB Init Warning]', (err as Error).message);
-    }
-  }
-  next();
-});
-
-if (!process.env.VERCEL) {
-  bootstrap().catch((err) => {
-    console.error('[Fatal Startup Error]', err);
-    process.exit(1);
-  });
-}
-
 async function bootstrap() {
   await initializeDatabase();
-  isDbInitialized = true;
 
   const server = app.listen(env.PORT, () => {
     const aiMode = env.GEMINI_API_KEY
@@ -53,5 +30,13 @@ async function bootstrap() {
   process.on('SIGTERM', shutdown);
 }
 
+if (!process.env.VERCEL) {
+  bootstrap().catch((err) => {
+    console.error('[Fatal Startup Error]', err);
+    process.exit(1);
+  });
+}
+
 export default app;
 module.exports = app;
+
