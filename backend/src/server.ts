@@ -35,12 +35,10 @@ async function bootstrap() {
   process.on('SIGTERM', shutdown);
 }
 
-if (!process.env.VERCEL) {
-  bootstrap().catch((err) => {
-    console.error('[Fatal Startup Error]', err);
-    process.exit(1);
-  });
-}
+bootstrap().catch((err) => {
+  console.error('[Fatal Startup Error]', err);
+  process.exit(1);
+});
 
 export default app;
 

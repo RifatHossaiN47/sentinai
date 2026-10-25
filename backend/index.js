@@ -4,7 +4,9 @@ let app;
 let bootError = null;
 
 try {
-  app = require('./dist/app').default || require('./dist/app');
+  // Loading server.js starts the HTTP listener on process.env.PORT for Vercel Express Services
+  const serverModule = require('./dist/server');
+  app = serverModule.default || serverModule;
 } catch (err) {
   bootError = err;
   console.error('[Vercel Express Boot Error]', err);
