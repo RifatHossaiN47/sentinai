@@ -1,0 +1,187 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="dJcL6QQp6-KQL9T0DGBP">
+    <mxGraphModel dx="1585" dy="811" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title_banner" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0F172A;strokeColor=#1E293B;align=center;verticalAlign=middle;arcSize=8;shadow=1;" value="&lt;b style=&quot;font-size: 19px; color: rgb(255, 255, 255);&quot;&gt;SentinAI: Intelligent API Monitoring &amp;amp; Alert System&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size: 13px; color: rgb(148, 163, 184);&quot;&gt;End-to-End System Architecture, Anomaly Detection Pipeline &amp;amp; AI Alert Synthesis&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 11px; color: rgb(56, 189, 248);&quot;&gt;Candidate: Md Rifat Hossen | Technical Assessment: Care Guide AI Automation Engineer&lt;/span&gt;" vertex="1">
+          <mxGeometry height="75" width="1670" x="40" y="25" as="geometry" />
+        </mxCell>
+        <mxCell id="zone1_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;arcSize=6;shadow=0;" value="" vertex="1">
+          <mxGeometry height="675" width="305" x="40" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="zone1_header" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1E293B;strokeColor=#0F172A;align=center;verticalAlign=middle;arcSize=10;" value="&lt;b style=&#39;font-size: 13px; color: #FFFFFF;&#39;&gt;1. INPUT &amp;amp; INGESTION (Sec 5)&lt;/b&gt;" vertex="1">
+          <mxGeometry height="35" width="275" x="55" y="135" as="geometry" />
+        </mxCell>
+        <mxCell id="node_stream_input" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#64748B;align=left;verticalAlign=middle;spacingLeft=12;arcSize=8;shadow=1;" value="&lt;b style=&#39;font-size: 13px; color: #0F172A;&#39;&gt;Live API Stream (POST /monitor)&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size: 11px; color: #475569;&#39;&gt;• Real-time telemetry from microservices&lt;br/&gt;• PatientDataAPI, AppointmentAPI, etc.&lt;br/&gt;• Payload: { api_name, latency, status, records }&lt;/span&gt;" vertex="1">
+          <mxGeometry height="95" width="265" x="60" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="node_file_input" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#64748B;align=left;verticalAlign=middle;spacingLeft=12;arcSize=8;shadow=1;" value="&lt;b style=&#39;font-size: 13px; color: #0F172A;&#39;&gt;Static JSON Batch File&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size: 11px; color: #475569;&#39;&gt;• Uploaded via UI or &lt;b&gt;POST /monitor/batch&lt;/b&gt;&lt;br/&gt;• Array of simulated or historical audit logs&lt;/span&gt;" vertex="1">
+          <mxGeometry height="85" width="265" x="60" y="305" as="geometry" />
+        </mxCell>
+        <mxCell id="node_ingestion_api" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#334155;strokeWidth=2;align=left;verticalAlign=middle;spacingLeft=12;arcSize=8;shadow=1;" value="&lt;b style=&#39;font-size: 13px; color: #0F172A;&#39;&gt;Express Ingestion Gateway&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size: 11px; color: #334155;&#39;&gt;• Modular Node.js / Express router&lt;br/&gt;• Payload protection (limit: 2MB)&lt;br/&gt;• CORS whitelist &amp;amp; request logging&lt;/span&gt;" vertex="1">
+          <mxGeometry height="105" width="265" x="60" y="415" as="geometry" />
+        </mxCell>
+        <mxCell id="node_zod_validator" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;align=left;verticalAlign=middle;spacingLeft=12;arcSize=8;shadow=1;" value="&lt;b style=&#39;font-size: 13px; color: #0F172A;&#39;&gt;Schema Validation (Zod)&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size: 11px; color: #334155;&#39;&gt;• Validates required fields &amp;amp; data types&lt;br/&gt;• status_code (100–599), latency (≥ 0)&lt;br/&gt;• records_returned (≥ 0)&lt;br/&gt;• Rejects corrupted data with HTTP 422&lt;/span&gt;" vertex="1">
+          <mxGeometry height="115" width="265" x="60" y="545" as="geometry" />
+        </mxCell>
+        <mxCell id="zone2_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#FDE68A;arcSize=6;shadow=0;" value="" vertex="1">
+          <mxGeometry height="675" width="305" x="380" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="zone2_header" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B45309;strokeColor=#78350F;align=center;verticalAlign=middle;arcSize=10;" value="&lt;b style=&#39;font-size: 13px; color: #FFFFFF;&#39;&gt;2. ANOMALY DETECTION (Sec 6.1 &amp;amp; 6.2)&lt;/b&gt;" vertex="1">
+          <mxGeometry height="35" width="275" x="395" y="135" as="geometry" />
+        </mxCell>
+        <mxCell id="node_rule_engine" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D97706;strokeWidth=1.5;align=left;verticalAlign=middle;spacingLeft=12;arcSize=8;shadow=1;" value="&lt;b style=&#39;font-size: 13px; color: #78350F;&#39;&gt;Deterministic Anomaly Engine&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size: 11px; color: #451A03;&#39;&gt;Evaluates response against defined rules:&lt;br/&gt;• &lt;b&gt;Failed Request:&lt;/b&gt; status_code ≥ 500&lt;br/&gt;• &lt;b&gt;High Latency:&lt;/b&gt; response_time &amp;gt; 2500ms&lt;br/&gt;• &lt;b&gt;Data Issue:&lt;/b&gt; records_returned == 0&lt;br/&gt;• &lt;b&gt;Client Error:&lt;/b&gt; status_code in [400..499]&lt;/span&gt;" vertex="1">
+          <mxGeometry height="150" width="265" x="400" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="node_anomaly_decision" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#B45309;strokeWidth=2;align=center;verticalAlign=middle;shadow=1;" value="&lt;b style=&#39;font-size: 12px; color: #78350F;&#39;&gt;Is Anomaly&lt;br/&gt;Detected?&lt;/b&gt;" vertex="1">
+          <mxGeometry height="95" width="170" x="447" y="375" as="geometry" />
+        </mxCell>
+        <mxCell id="node_cost_gatekeeper" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D97706;strokeWidth=1.5;align=left;verticalAlign=middle;spacingLeft=12;arcSize=8;shadow=1;" value="&lt;b style=&#39;font-size: 13px; color: #78350F;&#39;&gt;Token &amp;amp; Cost Gatekeeper (FinOps)&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size: 11px; color: #451A03;&#39;&gt;• &lt;b&gt;Healthy Path (NO):&lt;/b&gt; Logs to DB directly.&lt;br/&gt;  &lt;b&gt;0 Gemini calls&lt;/b&gt; (Saves 95%+ token costs)&lt;br/&gt;• &lt;b&gt;Anomaly Path (YES):&lt;/b&gt; Bundles failure context&lt;br/&gt;  and forwards to AI alert synthesis&lt;/span&gt;" vertex="1">
+          <mxGeometry height="140" width="265" x="400" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="zone3_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEF2FF;strokeColor=#C7D2FE;arcSize=6;shadow=0;" value="" vertex="1">
+          <mxGeometry height="675" width="305" x="720" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="zone3_header" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4F46E5;strokeColor=#312E81;align=center;verticalAlign=middle;arcSize=10;" value="&lt;b style=&#39;font-size: 13px; color: #FFFFFF;&#39;&gt;3. AI ALERT SYNTHESIS (Sec 6.3 &amp;amp; 8)&lt;/b&gt;" vertex="1">
+          <mxGeometry height="35" width="275" x="735" y="135" as="geometry" />
+        </mxCell>
+        <mxCell id="node_prompt_generator" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6366F1;align=left;verticalAlign=middle;spacingLeft=12;arcSize=8;shadow=1;" value="&lt;b style=&#39;font-size: 13px; color: #1E1B4B;&#39;&gt;Prompt &amp;amp; Context Builder&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size: 11px; color: #312E81;&#39;&gt;• Injects role: &lt;i&gt;&#39;Senior SRE Specialist&#39;&lt;/i&gt;&lt;br/&gt;• Formats anomaly telemetry into prompt&lt;br/&gt;• Prompts documented in &lt;b&gt;AI_Prompts.docx&lt;/b&gt; (Sec 9)&lt;/span&gt;" vertex="1">
+          <mxGeometry height="105" width="265" x="740" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="node_gemini_llm" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEF2FF;strokeColor=#4338CA;strokeWidth=2;align=left;verticalAlign=middle;spacingLeft=12;arcSize=8;shadow=1;" value="&lt;b style=&#39;font-size: 13px; color: #1E1B4B;&#39;&gt;Google Gemini LLM Engine&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size: 11px; color: #312E81;&#39;&gt;• Model: &lt;b&gt;gemini-2.0-flash&lt;/b&gt; (@google/genai)&lt;br/&gt;• Structured JSON Output Mode&lt;br/&gt;• Generates human-readable diagnosis:&lt;br/&gt;  - &lt;b&gt;root_cause_explanation&lt;/b&gt;&lt;br/&gt;  - &lt;b&gt;suggested_action&lt;/b&gt;&lt;br/&gt;  - &lt;b&gt;severity&lt;/b&gt; (CRITICAL / HIGH / WARN)&lt;/span&gt;" vertex="1">
+          <mxGeometry height="160" width="265" x="740" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="node_resilient_fallback" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#EF4444;strokeWidth=1.5;align=left;verticalAlign=middle;spacingLeft=12;arcSize=8;shadow=1;" value="&lt;b style=&#39;font-size: 13px; color: #991B1B;&#39;&gt;Resilient Rule Fallback&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size: 11px; color: #7F1D1D;&#39;&gt;• 3.5s timeout / catches HTTP 429 &amp;amp; network fails&lt;br/&gt;• Generates deterministic alert template&lt;br/&gt;• &lt;b&gt;Zero-Crash Guarantee:&lt;/b&gt; System never drops alerts!&lt;/span&gt;" vertex="1">
+          <mxGeometry height="130" width="265" x="740" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="zone4_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#A7F3D0;arcSize=6;shadow=0;" value="" vertex="1">
+          <mxGeometry height="675" width="305" x="1060" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="zone4_header" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#047857;strokeColor=#064E3B;align=center;verticalAlign=middle;arcSize=10;" value="&lt;b style=&#39;font-size: 13px; color: #FFFFFF;&#39;&gt;4. STORAGE &amp;amp; ALERTING (Sec 7)&lt;/b&gt;" vertex="1">
+          <mxGeometry height="35" width="275" x="1075" y="135" as="geometry" />
+        </mxCell>
+        <mxCell id="node_database" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#FFFFFF;strokeColor=#059669;strokeWidth=1.5;align=left;verticalAlign=middle;spacingLeft=12;shadow=1;" value="&lt;b style=&#39;font-size: 13px; color: #064E3B;&#39;&gt;Database Layer (Prisma ORM)&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size: 11px; color: #065F46;&#39;&gt;• &lt;b&gt;PostgreSQL / SQLite via Prisma&lt;/b&gt;&lt;br/&gt;• &lt;b&gt;TelemetryLog:&lt;/b&gt; Raw monitoring check logs&lt;br/&gt;• &lt;b&gt;AnomalyAlert:&lt;/b&gt; Anomaly records with AI alert&lt;br/&gt;  diagnosis, severity, and status (ACTIVE / RESOLVED)&lt;/span&gt;" vertex="1">
+          <mxGeometry height="145" width="265" x="1080" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="node_rest_alerts" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#059669;strokeWidth=2;align=left;verticalAlign=middle;spacingLeft=12;arcSize=8;shadow=1;" value="&lt;b style=&#39;font-size: 13px; color: #064E3B;&#39;&gt;REST API Endpoints&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size: 11px; color: #065F46;&#39;&gt;• &lt;b&gt;GET /alerts:&lt;/b&gt; Active &amp;amp; historic anomalies&lt;br/&gt;• &lt;b&gt;PATCH /alerts/:id/resolve:&lt;/b&gt; 1-click resolve&lt;br/&gt;• Powers real-time dashboard data stream&lt;/span&gt;" vertex="1">
+          <mxGeometry height="115" width="265" x="1080" y="375" as="geometry" />
+        </mxCell>
+        <mxCell id="node_email_dispatch" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#059669;align=left;verticalAlign=middle;spacingLeft=12;arcSize=8;shadow=1;" value="&lt;b style=&#39;font-size: 13px; color: #064E3B;&#39;&gt;Email Alerts (Nodemailer - Bonus)&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size: 11px; color: #065F46;&#39;&gt;• Meets optional Section 7.4 bonus&lt;br/&gt;• Fires rich HTML alert for &lt;b&gt;CRITICAL&lt;/b&gt; issues&lt;br/&gt;• Asynchronous &amp;amp; non-blocking delivery&lt;/span&gt;" vertex="1">
+          <mxGeometry height="130" width="265" x="1080" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="zone5_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F9FF;strokeColor=#BAE6FD;arcSize=6;shadow=0;" value="" vertex="1">
+          <mxGeometry height="675" width="305" x="1400" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="zone5_header" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0284C7;strokeColor=#075985;align=center;verticalAlign=middle;arcSize=10;" value="&lt;b style=&#39;font-size: 13px; color: #FFFFFF;&#39;&gt;5. DASHBOARD UI (Sec 7.3)&lt;/b&gt;" vertex="1">
+          <mxGeometry height="35" width="275" x="1415" y="135" as="geometry" />
+        </mxCell>
+        <mxCell id="node_dashboard_kpis" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0284C7;align=left;verticalAlign=middle;spacingLeft=12;arcSize=8;shadow=1;" value="&lt;b style=&#39;font-size: 13px; color: #075985;&#39;&gt;KPI &amp;amp; Health Metric Deck&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size: 11px; color: #0369A1;&#39;&gt;• Overall System Health Index (%)&lt;br/&gt;• Total Checks &amp;amp; Anomaly Failure Rate (%)&lt;br/&gt;• Average Latency &amp;amp; Active Incidents Count&lt;/span&gt;" vertex="1">
+          <mxGeometry height="115" width="265" x="1420" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="node_alerts_feed" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F9FF;strokeColor=#0284C7;strokeWidth=2;align=left;verticalAlign=middle;spacingLeft=12;arcSize=8;shadow=1;" value="&lt;b style=&#39;font-size: 13px; color: #075985;&#39;&gt;Interactive AI Alert Feed&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size: 11px; color: #0369A1;&#39;&gt;• Badges: &lt;font color=&#39;#DC2626&#39;&gt;&lt;b&gt;CRITICAL&lt;/b&gt;&lt;/font&gt;, &lt;font color=&#39;#D97706&#39;&gt;&lt;b&gt;HIGH&lt;/b&gt;&lt;/font&gt;, &lt;font color=&#39;#2563EB&#39;&gt;&lt;b&gt;WARN&lt;/b&gt;&lt;/font&gt;&lt;br/&gt;• Displays AI root cause &amp;amp; mitigation guidance&lt;br/&gt;• One-click &lt;b&gt;Resolve Alert&lt;/b&gt; action button&lt;/span&gt;" vertex="1">
+          <mxGeometry height="155" width="265" x="1420" y="345" as="geometry" />
+        </mxCell>
+        <mxCell id="node_batch_simulator" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0284C7;align=left;verticalAlign=middle;spacingLeft=12;arcSize=8;shadow=1;" value="&lt;b style=&#39;font-size: 13px; color: #075985;&#39;&gt;Test Simulator &amp;amp; File Uploader&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size: 11px; color: #0369A1;&#39;&gt;• Drag &amp;amp; drop JSON batch file upload&lt;br/&gt;• Built-in Synthetic Traffic Generator to test&lt;br/&gt;  anomalies live during recruiter evaluation&lt;/span&gt;" vertex="1">
+          <mxGeometry height="125" width="265" x="1420" y="535" as="geometry" />
+        </mxCell>
+        <mxCell id="flow1" edge="1" parent="1" source="node_stream_input" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="node_ingestion_api">
+          <mxGeometry relative="1" x="0.6286" as="geometry">
+            <Array as="points">
+              <mxPoint x="50" y="237.5" />
+              <mxPoint x="50" y="467.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow2" edge="1" parent="1" source="node_file_input" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;" target="node_ingestion_api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow3" edge="1" parent="1" source="node_ingestion_api" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=2;" target="node_zod_validator">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow4" edge="1" parent="1" source="node_zod_validator" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D97706;strokeWidth=2;" target="node_rule_engine" value="&lt;span style=&#39;font-size: 10px; background-color: #FFFFFF; color: #B45309; padding: 2px;&#39;&gt;Validated Data&lt;/span&gt;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="362" y="602" />
+              <mxPoint x="362" y="265" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow5" edge="1" parent="1" source="node_rule_engine" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D97706;strokeWidth=2;" target="node_anomaly_decision">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow6" edge="1" parent="1" source="node_anomaly_decision" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#B45309;strokeWidth=2;" target="node_cost_gatekeeper" value="&lt;span style=&#39;font-size: 10px; background-color: #FFFFFF; color: #78350F; padding: 2px;&#39;&gt;Evaluation&lt;/span&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow7_anomaly" edge="1" parent="1" source="node_cost_gatekeeper" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6366F1;strokeWidth=2.5;" target="node_prompt_generator" value="&lt;b style=&#39;font-size: 10.5px; background-color: #FFFFFF; color: #4F46E5; padding: 3px;&#39;&gt;YES [Anomaly] → Forward to AI&lt;/b&gt;">
+          <mxGeometry relative="1" x="0.0165" y="20" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="670" y="590" />
+              <mxPoint x="670" y="242" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow8_healthy" edge="1" parent="1" source="node_cost_gatekeeper" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=2;strokeDasharray=4 4;" target="node_database" value="&lt;b style=&#39;font-size: 10.5px; background-color: #FFFFFF; color: #059669; padding: 3px;&#39;&gt;NO [Healthy Request] → Direct Log (0 AI Tokens)&lt;/b&gt;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="532" y="730" />
+              <mxPoint x="1042" y="730" />
+              <mxPoint x="1042" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow9" edge="1" parent="1" source="node_prompt_generator" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4338CA;strokeWidth=2;" target="node_gemini_llm" value="&lt;span style=&#39;font-size: 10px; background-color: #FFFFFF; color: #4338CA; padding: 2px;&#39;&gt;Diagnostic Prompt&lt;/span&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow10_fallback" edge="1" parent="1" source="node_gemini_llm" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#EF4444;strokeWidth=1.5;strokeDasharray=2 2;" target="node_resilient_fallback" value="&lt;span style=&#39;font-size: 9.5px; background-color: #FFFFFF; color: #EF4444; padding: 2px;&#39;&gt;Timeout / 429 Fallback&lt;/span&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow11_ai_save" edge="1" parent="1" source="node_gemini_llm" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4338CA;strokeWidth=2;" target="node_database" value="&lt;b style=&#39;font-size: 10px; background-color: #FFFFFF; color: #4338CA; padding: 3px;&#39;&gt;AI Alert Output JSON&lt;/b&gt;">
+          <mxGeometry relative="1" x="-0.224" y="-18" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="1042" y="410" />
+              <mxPoint x="1042" y="235" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow12_fallback_save" edge="1" parent="1" source="node_resilient_fallback" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#EF4444;strokeWidth=1.5;" target="node_database">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1042" y="595" />
+              <mxPoint x="1042" y="265" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow13" edge="1" parent="1" source="node_database" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=2;" target="node_rest_alerts">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow14_email" edge="1" parent="1" source="node_rest_alerts" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#DC2626;strokeWidth=1.5;" target="node_email_dispatch" value="&lt;b style=&#39;font-size: 9.5px; background-color: #FFFFFF; color: #DC2626; padding: 2px;&#39;&gt;P1 Critical Filter&lt;/b&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow15_kpis" edge="1" parent="1" source="node_database" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0284C7;strokeWidth=2;" target="node_dashboard_kpis" value="&lt;span style=&#39;font-size: 10px; background-color: #FFFFFF; color: #0284C7; padding: 2px;&#39;&gt;Health Metrics&lt;/span&gt;">
+          <mxGeometry relative="1" x="-0.0133" y="-13" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="1382" y="247" />
+              <mxPoint x="1382" y="247" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow16_feed" edge="1" parent="1" source="node_rest_alerts" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0284C7;strokeWidth=2;" target="node_alerts_feed" value="&lt;b style=&quot;background-color: rgb(255, 255, 255); color: rgb(2, 132, 199); padding: 3px;&quot;&gt;&lt;font style=&quot;font-size: 7px;&quot;&gt;GET /alerts &amp;amp; PATCH /resolve&lt;/font&gt;&lt;/b&gt;">
+          <mxGeometry relative="1" x="0.1111" y="31" as="geometry">
+            <mxPoint x="9" y="-22" as="offset" />
+            <Array as="points">
+              <mxPoint x="1382" y="432" />
+              <mxPoint x="1382" y="422" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="footer_banner" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0F172A;strokeColor=#1E293B;align=center;verticalAlign=middle;arcSize=8;shadow=1;" value="&lt;table style=&#39;width: 100%; border-collapse: collapse; font-family: Inter, sans-serif;&#39;&gt;&lt;tr&gt;&lt;td style=&#39;width: 20%; padding: 4px; text-align: center;&#39;&gt;&lt;b style=&#39;font-size: 11px; color: #38BDF8;&#39;&gt;1. Dual Input Support&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size: 10px; color: #94A3B8;&#39;&gt;POST /monitor &amp;amp; static JSON upload (Sec 5)&lt;/span&gt;&lt;/td&gt;&lt;td style=&#39;width: 20%; padding: 4px; text-align: center; border-left: 1px solid #334155;&#39;&gt;&lt;b style=&#39;font-size: 11px; color: #FBBF24;&#39;&gt;2. Anomaly Rules&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size: 10px; color: #94A3B8;&#39;&gt;Latency &amp;gt; 2500ms, 5xx errors, 0 records (Sec 6.2)&lt;/span&gt;&lt;/td&gt;&lt;td style=&#39;width: 20%; padding: 4px; text-align: center; border-left: 1px solid #334155;&#39;&gt;&lt;b style=&#39;font-size: 11px; color: #A5B4FC;&#39;&gt;3. Gemini LLM Triage&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size: 10px; color: #94A3B8;&#39;&gt;Structured human-readable alerts (Sec 6.3)&lt;/span&gt;&lt;/td&gt;&lt;td style=&#39;width: 20%; padding: 4px; text-align: center; border-left: 1px solid #334155;&#39;&gt;&lt;b style=&#39;font-size: 11px; color: #34D399;&#39;&gt;4. Persistent Storage&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size: 10px; color: #94A3B8;&#39;&gt;Prisma DB &amp;amp; GET /alerts REST API (Sec 7.1, 7.2)&lt;/span&gt;&lt;/td&gt;&lt;td style=&#39;width: 20%; padding: 4px; text-align: center; border-left: 1px solid #334155;&#39;&gt;&lt;b style=&#39;font-size: 11px; color: #38BDF8;&#39;&gt;5. Clean Dashboard UI&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size: 10px; color: #94A3B8;&#39;&gt;Interactive React + Tailwind alerts UI (Sec 7.3)&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="75" width="1670" x="40" y="815" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
