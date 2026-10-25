@@ -40,7 +40,3 @@ if (!process.env.VERCEL) {
     });
 }
 exports.default = app_1.default;
-// @ts-ignore
-module.exports = app_1.default;
-// @ts-ignore
-module.exports.default = app_1.default;

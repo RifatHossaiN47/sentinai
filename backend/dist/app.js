@@ -15,6 +15,7 @@ const monitor_routes_1 = __importDefault(require("./routes/monitor.routes"));
 const alert_routes_1 = __importDefault(require("./routes/alert.routes"));
 const metrics_routes_1 = __importDefault(require("./routes/metrics.routes"));
 const app = (0, express_1.default)();
+app.set('trust proxy', 1);
 app.use((0, helmet_1.default)({
     contentSecurityPolicy: false,
 }));
@@ -35,6 +36,14 @@ const monitorRateLimiter = (0, express_rate_limit_1.default)({
     max: 240,
     standardHeaders: true,
     legacyHeaders: false,
+    keyGenerator: (req) => {
+        const xff = req.headers['x-forwarded-for'];
+        if (xff)
+            return (Array.isArray(xff) ? xff[0] : xff.split(',')[0]).trim();
+        return (req.headers['x-real-ip'] ||
+            req.socket?.remoteAddress ||
+            '127.0.0.1');
+    },
     message: {
         error: 'Too Many Requests',
         message: 'Rate limit exceeded on telemetry ingestion endpoint.',
@@ -65,7 +74,3 @@ app.use((req, res) => {
 });
 app.use(errorHandler_1.errorHandler);
 exports.default = app;
-// @ts-ignore
-module.exports = app;
-// @ts-ignore
-module.exports.default = app;

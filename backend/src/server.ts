@@ -43,10 +43,6 @@ if (!process.env.VERCEL) {
 }
 
 export default app;
-// @ts-ignore
-module.exports = app;
-// @ts-ignore
-module.exports.default = app;
 
 
 

@@ -10,7 +10,7 @@ function errorHandler(err, _req, res, _next) {
         return;
     }
     const statusCode = err.status && err.status >= 400 && err.status < 600 ? err.status : 500;
-    console.error(`[Error ${statusCode}] ${err.message}`);
+    console.error(`[Error ${statusCode}] ${err.message}`, err.stack);
     res.status(statusCode).json({
         error: statusCode === 500 ? 'Internal Server Error' : 'Request Error',
         message: process.env.NODE_ENV === 'production' && statusCode === 500

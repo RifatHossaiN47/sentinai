@@ -12,6 +12,7 @@ import metricsRoutes from './routes/metrics.routes';
 import { initializeDatabase } from './config/prisma';
 
 const app = express();
+app.set('trust proxy', 1);
 
 app.use(
   helmet({
@@ -38,6 +39,15 @@ const monitorRateLimiter = rateLimit({
   max: 240,
   standardHeaders: true,
   legacyHeaders: false,
+  keyGenerator: (req) => {
+    const xff = req.headers['x-forwarded-for'];
+    if (xff) return (Array.isArray(xff) ? xff[0] : xff.split(',')[0]).trim();
+    return (
+      (req.headers['x-real-ip'] as string) ||
+      req.socket?.remoteAddress ||
+      '127.0.0.1'
+    );
+  },
   message: {
     error: 'Too Many Requests',
     message: 'Rate limit exceeded on telemetry ingestion endpoint.',
@@ -80,7 +90,3 @@ app.use((req, res) => {
 app.use(errorHandler);
 
 export default app;
-// @ts-ignore
-module.exports = app;
-// @ts-ignore
-module.exports.default = app;
