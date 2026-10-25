@@ -10,8 +10,8 @@ dotenv_1.default.config();
 const envSchema = zod_1.z.object({
     PORT: zod_1.z.coerce.number().int().positive().default(5000),
     NODE_ENV: zod_1.z.enum(['development', 'production', 'test']).default('development'),
-    DATABASE_URL: zod_1.z.string().min(1).default('file:./dev.db'),
-    DIRECT_URL: zod_1.z.string().optional().default(''),
+    DATABASE_URL: zod_1.z.string().min(1).default('postgresql://neondb_owner:npg_wy9XhilgfY8p@ep-flat-thunder-a11tbbv1.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&connect_timeout=15'),
+    DIRECT_URL: zod_1.z.string().optional().default('postgresql://neondb_owner:npg_wy9XhilgfY8p@ep-flat-thunder-a11tbbv1.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&connect_timeout=15'),
     GEMINI_API_KEY: zod_1.z.string().optional().default(''),
     GEMINI_MODEL: zod_1.z.string().default('gemini-3.5-flash-lite'),
     AI_TIMEOUT_MS: zod_1.z.coerce.number().int().positive().default(6000),

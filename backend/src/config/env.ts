@@ -6,8 +6,8 @@ dotenv.config();
 const envSchema = z.object({
   PORT: z.coerce.number().int().positive().default(5000),
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
-  DATABASE_URL: z.string().min(1).default('file:./dev.db'),
-  DIRECT_URL: z.string().optional().default(''),
+  DATABASE_URL: z.string().min(1).default('postgresql://neondb_owner:npg_wy9XhilgfY8p@ep-flat-thunder-a11tbbv1.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&connect_timeout=15'),
+  DIRECT_URL: z.string().optional().default('postgresql://neondb_owner:npg_wy9XhilgfY8p@ep-flat-thunder-a11tbbv1.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&connect_timeout=15'),
   GEMINI_API_KEY: z.string().optional().default(''),
   GEMINI_MODEL: z.string().default('gemini-3.5-flash-lite'),
   AI_TIMEOUT_MS: z.coerce.number().int().positive().default(6000),
