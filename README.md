@@ -1,5 +1,8 @@
 # SentinAI — Intelligent API Monitoring & Alert System
 
+**Live Demo:** [https://sentinai.vercel.app](https://sentinai.vercel.app)  
+**GitHub Repository:** [https://github.com/RifatHossaiN47/sentinai](https://github.com/RifatHossaiN47/sentinai)
+
 SentinAI is a full-stack API health monitoring, anomaly detection, and AI-assisted incident triage system built with **Node.js**, **Express**, **TypeScript**, **Prisma (PostgreSQL)**, **Google Gemini**, and **React**.
 
 It continuously tracks microservice health metrics (`response_time_ms`, `status_code`, and `records_returned`), flags anomalies against configurable SLA thresholds, and uses Google Gemini to generate clear root-cause explanations and remediation steps for on-call engineers.
