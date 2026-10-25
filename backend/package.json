@@ -4,6 +4,7 @@
   "description": "SentinAI Intelligent API Monitoring & Automated Alerting Backend Engine",
   "main": "dist/server.js",
   "scripts": {
+    "postinstall": "npx prisma generate",
     "predev": "node scripts/ensure-env.js",
     "dev": "tsx watch src/server.ts",
     "build": "node scripts/ensure-env.js && npx prisma@6.4.1 generate && tsc",

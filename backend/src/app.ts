@@ -25,15 +25,12 @@ if (process.env.NODE_ENV !== 'test') {
   app.use(requestLogger);
 }
 
-let isDbInitialized = false;
-app.use((_req, _res, next) => {
-  if (!isDbInitialized) {
-    isDbInitialized = true;
-    initializeDatabase().catch((err) => {
-      console.warn('[Database] Background init note:', (err as Error).message);
-    });
-  }
-  next();
+app.get(['/health', '/api/health'], (_req, res) => {
+  res.status(200).json({
+    service: 'sentinai-engine',
+    status: 'operational',
+    timestamp: new Date().toISOString(),
+  });
 });
 
 const monitorRateLimiter = rateLimit({
@@ -45,14 +42,6 @@ const monitorRateLimiter = rateLimit({
     error: 'Too Many Requests',
     message: 'Rate limit exceeded on telemetry ingestion endpoint.',
   },
-});
-
-app.get(['/health', '/api/health'], (_req, res) => {
-  res.status(200).json({
-    service: 'sentinai-engine',
-    status: 'operational',
-    timestamp: new Date().toISOString(),
-  });
 });
 
 
