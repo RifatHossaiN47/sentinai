@@ -26,7 +26,7 @@ if (process.env.NODE_ENV !== 'test') {
   app.use(requestLogger);
 }
 
-app.get(['/health', '/api/health'], (_req, res) => {
+app.get(['/', '/api', '/health', '/api/health'], (_req, res) => {
   res.status(200).json({
     service: 'sentinai-engine',
     status: 'operational',
