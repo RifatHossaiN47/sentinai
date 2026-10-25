@@ -4,8 +4,7 @@
     "backend": {
       "root": "backend",
       "framework": "express",
-      "entrypoint": "dist/server.js",
-      "buildCommand": "npx prisma@6.4.1 generate && tsc"
+      "entrypoint": "index.js"
     },
     "frontend": {
       "root": "frontend",

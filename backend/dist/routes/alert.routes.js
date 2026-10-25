@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const alert_controller_1 = require("../controllers/alert.controller");
+const validate_1 = require("../middleware/validate");
+const router = (0, express_1.Router)();
+router.get('/', alert_controller_1.getAlerts);
+router.post('/reset', alert_controller_1.resetDemoState);
+router.patch('/:id/resolve', (0, validate_1.validateBody)(validate_1.resolveAlertSchema), alert_controller_1.resolveAlert);
+exports.default = router;
