@@ -2,7 +2,7 @@
   "name": "sentinai-engine",
   "version": "1.0.0",
   "description": "SentinAI Intelligent API Monitoring & Automated Alerting Backend Engine",
-  "main": "dist/server.js",
+  "main": "index.js",
   "scripts": {
     "postinstall": "npx prisma generate",
     "predev": "node scripts/ensure-env.js",

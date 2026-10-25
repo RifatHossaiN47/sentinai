@@ -4,32 +4,41 @@ let app;
 let bootError = null;
 
 try {
-  // Loading server.js starts the HTTP listener on process.env.PORT for Vercel Express Services
-  const serverModule = require('./dist/server');
-  app = serverModule.default || serverModule;
+  const appModule = require('./dist/app');
+  app = appModule.default || appModule;
 } catch (err) {
   bootError = err;
   console.error('[Vercel Express Boot Error]', err);
 }
 
-const fallbackApp = express();
-fallbackApp.use(express.json());
+const serverlessApp = express();
 
-fallbackApp.all('*', (req, res) => {
-  res.status(500).json({
-    diagnostic: 'BACKEND_BOOT_FAILED',
-    message: bootError ? bootError.message : 'Unknown boot failure',
-    stack: bootError ? bootError.stack : null,
-    node_version: process.version,
+serverlessApp.get('/api/diagnostic', (req, res) => {
+  res.status(200).json({
+    status: 'diagnostic_online',
+    appLoaded: !!app,
+    bootError: bootError ? { message: bootError.message, stack: bootError.stack } : null,
     env: {
       NODE_ENV: process.env.NODE_ENV,
+      VERCEL: process.env.VERCEL,
       DATABASE_URL_SET: !!process.env.DATABASE_URL,
       DIRECT_URL_SET: !!process.env.DIRECT_URL,
     },
+    nodeVersion: process.version,
   });
 });
 
-const exportedApp = app || fallbackApp;
+if (app) {
+  serverlessApp.use(app);
+} else {
+  serverlessApp.all('*', (req, res) => {
+    res.status(500).json({
+      error: 'BACKEND_FAILED_TO_LOAD',
+      message: bootError ? bootError.message : 'Unknown load error',
+      stack: bootError ? bootError.stack : null,
+    });
+  });
+}
 
-module.exports = exportedApp;
-module.exports.default = exportedApp;
+module.exports = serverlessApp;
+module.exports.default = serverlessApp;
