@@ -33,11 +33,6 @@ export const App: React.FC = () => {
       />
 
       <main className="mx-auto w-full max-w-7xl flex-1 space-y-6 px-4 py-6 sm:px-6">
-        {error && (
-          <div className="rounded-xl border border-rose-500/40 bg-rose-950/40 px-4 py-3 text-xs text-rose-200">
-            <strong>Telemetry Engine Connection Notice:</strong> {error}. Ensure the backend server is running on port 5000.
-          </div>
-        )}
 
         <KpiDeck metrics={metrics} />
 

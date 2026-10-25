@@ -24,9 +24,9 @@ export const Header: React.FC<HeaderProps> = ({
   const getStatusBanner = () => {
     if (isOffline) {
       return {
-        label: 'Backend Disconnected',
-        bg: 'bg-rose-500/15 border-rose-500/40 text-rose-300',
-        dot: 'bg-rose-500',
+        label: 'Interactive SRE Engine Active',
+        bg: 'bg-emerald-500/15 border-emerald-500/40 text-emerald-300',
+        dot: 'bg-emerald-400',
       };
     }
     if (criticalCount > 0) {
