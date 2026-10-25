@@ -26,14 +26,12 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 let isDbInitialized = false;
-app.use(async (_req, _res, next) => {
+app.use((_req, _res, next) => {
   if (!isDbInitialized) {
-    try {
-      await initializeDatabase();
-      isDbInitialized = true;
-    } catch (err) {
-      console.warn('[Database] Initialization note:', (err as Error).message);
-    }
+    isDbInitialized = true;
+    initializeDatabase().catch((err) => {
+      console.warn('[Database] Background init note:', (err as Error).message);
+    });
   }
   next();
 });
@@ -49,13 +47,14 @@ const monitorRateLimiter = rateLimit({
   },
 });
 
-app.get('/health', (_req, res) => {
+app.get(['/health', '/api/health'], (_req, res) => {
   res.status(200).json({
     service: 'sentinai-engine',
     status: 'operational',
     timestamp: new Date().toISOString(),
   });
 });
+
 
 // Dual-mounted route aliasing to support both raw PDF paths (/monitor, /alerts) and REST /api/* prefixes
 app.use('/monitor', monitorRateLimiter, monitorRoutes);
