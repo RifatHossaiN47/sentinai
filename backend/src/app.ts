@@ -91,3 +91,7 @@ app.use((req, res) => {
 app.use(errorHandler);
 
 export default app;
+// @ts-ignore
+module.exports = app;
+// @ts-ignore
+module.exports.default = app;
