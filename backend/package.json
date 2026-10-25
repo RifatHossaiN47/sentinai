@@ -6,7 +6,7 @@
   "scripts": {
     "predev": "node scripts/ensure-env.js",
     "dev": "tsx watch src/server.ts",
-    "build": "node scripts/ensure-env.js && npx prisma generate && tsc",
+    "build": "node scripts/ensure-env.js && npx prisma@6.4.1 generate && tsc",
     "start": "node dist/server.js",
     "db:push": "node scripts/ensure-env.js && npx prisma db push",
     "db:seed": "node scripts/ensure-env.js && tsx prisma/seed.ts",

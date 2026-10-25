@@ -1,13 +1,27 @@
 {
-  "buildCommand": "npx prisma@6.4.1 generate --schema=backend/prisma/schema.prisma && npm --prefix frontend install && npm --prefix frontend run build",
-  "outputDirectory": "frontend/dist",
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "backend": {
+      "root": "backend",
+      "framework": "express"
+    },
+    "frontend": {
+      "root": "frontend",
+      "framework": "vite"
+    }
+  },
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api" },
-    { "source": "/monitor", "destination": "/api" },
-    { "source": "/monitor/(.*)", "destination": "/api" },
-    { "source": "/alerts", "destination": "/api" },
-    { "source": "/alerts/(.*)", "destination": "/api" },
-    { "source": "/metrics", "destination": "/api" },
-    { "source": "/health", "destination": "/api" }
+    {
+      "source": "/api/(.*)",
+      "destination": {
+        "service": "backend"
+      }
+    },
+    {
+      "source": "/(.*)",
+      "destination": {
+        "service": "frontend"
+      }
+    }
   ]
 }
