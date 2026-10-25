@@ -1,0 +1,13 @@
+{
+  "buildCommand": "npx prisma generate --schema=backend/prisma/schema.prisma && npm --prefix frontend install && npm --prefix frontend run build",
+  "outputDirectory": "frontend/dist",
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/index.ts" },
+    { "source": "/monitor", "destination": "/api/index.ts" },
+    { "source": "/monitor/(.*)", "destination": "/api/index.ts" },
+    { "source": "/alerts", "destination": "/api/index.ts" },
+    { "source": "/alerts/(.*)", "destination": "/api/index.ts" },
+    { "source": "/metrics", "destination": "/api/index.ts" },
+    { "source": "/health", "destination": "/api/index.ts" }
+  ]
+}
